@@ -37,12 +37,18 @@ public class StepMachine {
         context.setPlayer(player);
         context.setOpponent(opponent);
         if (!firstStep) {
-            dialogue.say("Player {}, opponent made his moves. Here's your board: ", player.getName());
-            BoardDrawer.drawOwn(player.getBoard());
+            if (player.isHuman()) {
+                dialogue.say("Player {}, opponent made his moves. Here's your board: ", player.getName());
+                BoardDrawer.drawOwn(player.getBoard());
+            } else {
+                dialogue.say("AI player {} makes a move", player.getName());
+            }
         }
         while (true) {
-            dialogue.say("Player {}, make a move. Here's opponent's board", player.getName());
-            BoardDrawer.drawOpponents(opponent.getBoard());
+            if (player.isHuman()) {
+                dialogue.say("Player {}, make a move. Here's opponent's board", player.getName());
+                BoardDrawer.drawOpponents(opponent.getBoard());
+            }
             var firstResult = makeMove(player, opponent.getBoard());
             if (firstResult.isChangingMove() && opponent.getBoard().isGameOver()) {
                 return StepResult.gameOver(player);
@@ -53,7 +59,11 @@ public class StepMachine {
             }
             dialogue.say(firstResult.getMessage());
             if (firstResult.isChangingMove()) {
-                dialogue.say("Make another move, player {}", player.getName());
+                if (player.isHuman()) {
+                    dialogue.say("Make another move, player {}", player.getName());
+                } else {
+                    dialogue.say("AI player {} stroke successfully and will make one more move", player.getName());
+                }
             } else {
                 return StepResult.gameContinues();
             }

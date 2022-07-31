@@ -1,4 +1,4 @@
-package com.daba.sb.util;
+package com.daba.sb.process;
 
 import com.daba.sb.Dialogue;
 import com.daba.sb.model.Alignment;

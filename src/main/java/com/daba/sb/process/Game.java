@@ -9,7 +9,6 @@ import com.daba.sb.util.GlobalCommandsAssist;
 import com.daba.sb.process.move.impl.HumanMove;
 import com.daba.sb.model.Player;
 import com.daba.sb.model.ShipConfig;
-import com.daba.sb.util.ShipsOperations;
 
 import java.util.List;
 
