@@ -36,7 +36,7 @@ public class Board {
             return false;
         }
         Ship ship = new Ship(shipSize, dot, alignment);
-        if (intersects(ship)) {
+        if (intersectsOrTouches(ship)) {
             return false;
         }
         fleet.add(ship);
@@ -96,7 +96,7 @@ public class Board {
         return true;
     }
 
-    private boolean intersects(Ship ship) {
+    private boolean intersectsOrTouches(Ship ship) {
         for (Dot dot : ship.getDots()) {
             if (get(dot) != Figure.EMPTY) {
                 return true;

@@ -67,7 +67,7 @@ public class BoardUtils {
         for (Pair<Integer, Integer> adj : adjacency) {
             var x = dot.getX() + adj.getLeft();
             var y = dot.getY() + adj.getRight();
-            if (x >=0 && y >=0 && x < boardSize && y < boardSize) {
+            if (x >= 0 && y >= 0 && x < boardSize && y < boardSize) {
                 result.add(Dot.of(x, y));
             }
         }
